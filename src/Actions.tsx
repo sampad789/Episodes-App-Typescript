@@ -5,9 +5,10 @@ export const fetchDataAction = async (dispatch: any) => {
     "https://api.tvmaze.com/singlesearch/shows?q=brooklyn-nine-nine&embed=episodes";
   const data = await fetch(URL);
   const dataJSON = await data.json();
+
   return dispatch({
     type: "FETCH_DATA",
-    payload: dataJSON._embedded.episodes
+    payload: dataJSON._embedded.episodes,
   });
 };
 
@@ -19,7 +20,7 @@ export const toggleFavAction = (
   const checkEpisodeInFav = state.favourites.includes(episode);
   let dispatchObj = {
     type: "ADD_FAV",
-    payload: episode
+    payload: episode,
   };
   if (checkEpisodeInFav) {
     const removedEpisodeFromFav = state.favourites.filter(
@@ -27,7 +28,7 @@ export const toggleFavAction = (
     );
     dispatchObj = {
       type: "REMOVE_FAV",
-      payload: removedEpisodeFromFav
+      payload: removedEpisodeFromFav,
     };
   }
   return dispatch(dispatchObj);
@@ -36,8 +37,9 @@ export const toggleFavAction = (
 export const fetchRandomEpisode = (state: IState, dispatch: any): IAction => {
   const randomize = state.episodes;
   const randomEpisode = randomize[Math.floor(Math.random() * randomize.length)];
+  console.log(randomEpisode);
   return dispatch({
     type: "RANDOM_EPISODE",
-    payload: randomEpisode
+    payload: randomEpisode,
   });
 };

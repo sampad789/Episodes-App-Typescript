@@ -5,7 +5,7 @@ const initialState: IState = {
   // Defining initial state
   episodes: [],
   favourites: [],
-  random: []
+  random: [],
 };
 
 export const Store = React.createContext<IState | any>(initialState);
@@ -15,22 +15,22 @@ function reducer(state: IState, action: IAction): IState {
     case "FETCH_DATA":
       return {
         ...state,
-        episodes: action.payload
+        episodes: action.payload,
       };
     case "ADD_FAV":
       return {
         ...state,
-        favourites: [...state.favourites, action.payload]
+        favourites: [...state.favourites, action.payload],
       };
     case "REMOVE_FAV":
       return {
         ...state,
-        favourites: action.payload
+        favourites: action.payload,
       };
     case "RANDOM_EPISODE":
       return {
         ...state,
-        random: [action.payload]
+        random: [action.payload],
       };
     default:
       return state;
@@ -38,7 +38,7 @@ function reducer(state: IState, action: IAction): IState {
 }
 
 export function StoreProvider({
-  children
+  children,
 }: JSX.ElementChildrenAttribute): JSX.Element {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   return (

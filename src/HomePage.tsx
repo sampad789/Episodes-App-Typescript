@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Pagination from "./Pagination";
 
 import { IEpisodeProps } from "./interfaces";
 import {
   fetchDataAction,
   toggleFavAction,
-  fetchRandomEpisode
+  fetchRandomEpisode,
 } from "./Actions";
 import { Store } from "./Store";
 
@@ -15,7 +15,7 @@ export default function HomePage() {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [episodePerPage] = React.useState(12);
 
-  React.useEffect(() => {
+  useEffect(() => {
     state.episodes.length === 0 && fetchDataAction(dispatch);
   });
 
@@ -26,7 +26,6 @@ export default function HomePage() {
     indexOfFirstPost,
     indexOfLastPost
   );
-  console.log(currentEpisodes);
 
   // Change page
 
@@ -35,12 +34,12 @@ export default function HomePage() {
   };
 
   const props: IEpisodeProps = {
-    episodes: state.episodes,
+    episodes: currentEpisodes,
     store: { state, dispatch },
     toggleFavAction,
     fetchRandomEpisode,
     favourites: state.favourites,
-    random: state.random
+    random: state.random,
   };
 
   return (

@@ -4,7 +4,7 @@ import { IPagination } from "./interfaces";
 const Pagination = ({
   postsPerPage,
   totalPosts,
-  paginate
+  paginate,
 }: IPagination): JSX.Element => {
   const pageNumbers = [];
 
@@ -14,12 +14,15 @@ const Pagination = ({
 
   return (
     <nav>
-      <ul className="pagination">
-        {pageNumbers.map(number => (
-          <li key={number} className="page-item">
-            <a onClick={() => paginate(number)} href="!#" className="page-link">
-              {number}
-            </a>
+      <ul className="pagination justify-content-center">
+        {pageNumbers.map((number) => (
+          <li key={number} className="page-item ">
+            <button
+              onClick={() => paginate(number)}
+              className="page-link active"
+            >
+              <span className="active">{number}</span>
+            </button>
           </li>
         ))}
       </ul>
