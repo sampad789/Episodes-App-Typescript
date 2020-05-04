@@ -20,6 +20,7 @@ body {
 .episode-box {
   padding: 0.5rem;
   width: 400px;
+  margin: 0.5rem;
 }
 .image {
   width: 400px;

@@ -7,7 +7,6 @@ export default function App(props: any): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
   const { episodes } = props;
 
-  console.log(state);
   return (
     <React.Fragment>
       <header className="header">
@@ -17,7 +16,7 @@ export default function App(props: any): JSX.Element {
           <button
             type="button"
             className="button"
-            onClick={() => fetchRandomEpisode(state, dispatch, episodes)}
+            onClick={() => fetchRandomEpisode(state, dispatch)}
           >
             Watch a random Episode
           </button>

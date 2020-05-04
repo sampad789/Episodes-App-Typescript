@@ -24,7 +24,11 @@ export interface IEpisode {
   season: number;
   summary: string;
 }
-
+export interface IPagination {
+  postsPerPage: number;
+  totalPosts: number;
+  paginate: (number: number) => void;
+}
 export interface IEpisodeProps {
   episodes: Array<IEpisode>;
   store: { state: IState; dispatch: any };

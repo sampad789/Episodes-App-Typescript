@@ -1,4 +1,6 @@
 import React from "react";
+import Pagination from "./Pagination";
+
 import { IEpisodeProps } from "./interfaces";
 import {
   fetchDataAction,
@@ -10,9 +12,27 @@ import { Store } from "./Store";
 const EpisodeList = React.lazy<any>(() => import("./EpisodeList"));
 export default function HomePage() {
   const { state, dispatch } = React.useContext(Store);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [episodePerPage] = React.useState(12);
+
   React.useEffect(() => {
     state.episodes.length === 0 && fetchDataAction(dispatch);
   });
+
+  // Get current posts
+  const indexOfLastPost = currentPage * episodePerPage;
+  const indexOfFirstPost = indexOfLastPost - episodePerPage;
+  const currentEpisodes = state.episodes.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+  console.log(currentEpisodes);
+
+  // Change page
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   const props: IEpisodeProps = {
     episodes: state.episodes,
@@ -22,12 +42,20 @@ export default function HomePage() {
     favourites: state.favourites,
     random: state.random
   };
+
   return (
     <React.Fragment>
       <React.Suspense fallback={<div>Loading...</div>}>
         <section className="episode-layout">
           <EpisodeList {...props} />
         </section>
+        <div className="pagination">
+          <Pagination
+            postsPerPage={episodePerPage}
+            totalPosts={state.episodes.length}
+            paginate={paginate}
+          />
+        </div>
       </React.Suspense>
     </React.Fragment>
   );

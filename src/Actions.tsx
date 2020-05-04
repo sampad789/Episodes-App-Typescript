@@ -33,11 +33,7 @@ export const toggleFavAction = (
   return dispatch(dispatchObj);
 };
 
-export const fetchRandomEpisode = (
-  state: IState,
-  dispatch: any,
-  episodes: IEpisode | any
-): IAction => {
+export const fetchRandomEpisode = (state: IState, dispatch: any): IAction => {
   const randomize = state.episodes;
   const randomEpisode = randomize[Math.floor(Math.random() * randomize.length)];
   return dispatch({

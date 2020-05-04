@@ -13,7 +13,10 @@ export const Store = React.createContext<IState | any>(initialState);
 function reducer(state: IState, action: IAction): IState {
   switch (action.type) {
     case "FETCH_DATA":
-      return { ...state, episodes: action.payload };
+      return {
+        ...state,
+        episodes: action.payload
+      };
     case "ADD_FAV":
       return {
         ...state,

@@ -1,5 +1,6 @@
 import React from "react";
 import { IEpisode } from "./interfaces";
+
 export default function EpisodeList(props: any): Array<JSX.Element[]> {
   const { episodes, toggleFavAction, favourites, store } = props;
   const { state, dispatch } = store;
@@ -8,15 +9,19 @@ export default function EpisodeList(props: any): Array<JSX.Element[]> {
       <section key={episode.id} className="episode-box">
         <img
           className="image"
-          src={episode.image.original}
+          src={episode.image ? episode.image.original : episode.image}
           alt={`Brooklyn Nine Nine ${episode.name}`}
         />
-        <div>{episode.name}</div>
+        <div>
+          <b>{episode.name}</b>
+        </div>
         <section>
           <div>
             {" "}
-            S{episode.season}Ep
-            {episode.number}
+            <b>
+              S{episode.season} Ep
+              {episode.number}
+            </b>
           </div>
           <button
             className="button"
