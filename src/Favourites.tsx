@@ -14,7 +14,7 @@ export default function Favourites(): JSX.Element {
     toggleFavAction,
     fetchRandomEpisode,
     favourites: state.favourites,
-    random: state.random
+    random: state.random,
   };
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
