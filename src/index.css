@@ -24,6 +24,7 @@ body {
 }
 .image {
   width: 400px;
+  margin: auto;
 }
 .button {
   background-color: white;
@@ -60,7 +61,7 @@ body {
   font-style: bold;
 }
 .pagination {
-  margin-left: 22rem;
+  margin-left: 12rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }

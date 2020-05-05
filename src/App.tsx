@@ -20,7 +20,7 @@ export default function App(props: any): JSX.Element {
     <React.Fragment>
       <header className="header">
         <div>
-          <h1>Brooklyn Nein-Nein </h1>
+          <h1>South-Park</h1>
           <p>Select Your Favourite Episode </p>
           <button type="button" className="button" onClick={fetchdata}>
             Watch a random Episode
